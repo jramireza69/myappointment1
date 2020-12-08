@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="4dp"
+        card_view:cardCornerRadius="3dp"
+        tools:context=".MenuActivity">
+    <LinearLayout
+            android:padding="6dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/tvAppointmentId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Cita Medica N 7">
+        </TextView>
+        <TextView
+                android:id="@+id/tvDoctorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                tools:text="Medico test"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                />
+
+        <TextView
+                android:id="@+id/tvSheduledDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                tools:text="Atencion el día 12/12/2020">
+        </TextView>
+        <TextView
+                android:id="@+id/tvSheduledTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                tools:text="A las 03:00 PM">
+        </TextView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
