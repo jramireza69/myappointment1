@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_create_appointment.*
 import kotlinx.android.synthetic.main.activity_menu.*
 import java.util.*
@@ -22,8 +23,15 @@ class   CreateAppointmentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_appointment)
 
         btnNext.setOnClickListener {
-            cvStep1.visibility = View.GONE
-            cvStep2.visibility = View.VISIBLE
+            if (etDescripcion.text.toString().length < 3){
+                etDescripcion.error = getString(R.string.error_descripcion)
+
+            }else {
+                cvStep1.visibility = View.GONE
+                cvStep2.visibility = View.VISIBLE
+            }
+
+
         }
         btnConfirmAppointment.setOnClickListener {
             Toast.makeText(this, "Cita registrada correcatamente", Toast.LENGTH_SHORT).show()
@@ -94,5 +102,27 @@ val datePiker = datePikerDialog.datePicker  //acceso instancia datepiker
     }
     fun Int.twoDigits()
      = if (this >= 10) this.toString() else "0$this"
-}
+
+    override fun onBackPressed() {
+        if (cvStep2.visibility == View.VISIBLE){
+            cvStep1.visibility = View.VISIBLE
+            cvStep2.visibility = View.GONE
+        }else if (cvStep1.visibility == View.VISIBLE){
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(getString(R.string.dialogo_create_appointment_exit_title))
+            builder.setMessage(getString(R.string.dialogo_create_appointment_exit1))
+            builder.setPositiveButton(getString(R.string.dialogo_create_appointment_exit2)) { _, _ ->
+                finish()
+            }
+            builder.setNegativeButton(getString(R.string.dialogo_create_appointment_exit3)){ dialog, _ ->
+                dialog.dismiss()
+            }
+            val dialog =  builder.create()
+            dialog.show()
+         }
+        }
+    }
+
+
+
 
